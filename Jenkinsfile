@@ -2,6 +2,9 @@
 pipeline {
     //agent { label 'node1' }
      agent any
+    tools {
+        maven 'maven-3'
+    }
  // environment {
  //        JFROG_USER = credentials('jfrog-creds').username
  //        JFROG_API_KEY = credentials('jfrog-creds').password
@@ -20,13 +23,14 @@ pipeline {
                 sh '''
                     java -version
                     mvn -version
+                    mvn clean install
 
                     export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
                     export PATH=$JAVA_HOME/bin:$PATH
                     echo "JAVA_HOME=$JAVA_HOME"
                     echo "PATH=$PATH"
 
-                    mvn clean install
+                    
                 '''
             }
         }
