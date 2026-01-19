@@ -1,6 +1,6 @@
 
 pipeline {
-    //agent { label 'Java' }
+    //agent { label 'node1' }
      agent any
  // environment {
  //        JFROG_USER = credentials('jfrog-creds').username
@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'feature-1',
-                    url: 'https://github.com/priya027v/Parcel-service.git'
+                    url: 'https://github.com/imranbc/Parcel-service.git'
             }
         }
 
